@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm neutral foundation */
+    --background: 40 20% 98.5%;
+    --surface: 40 18% 96.5%;
+    --foreground: 24 10% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 24 10% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 12%;
+    --muted: 40 14% 94.5%;
+    --muted-foreground: 25 6% 44%;
+    --border: 35 12% 89%;
+    --input: 35 12% 86%;
+
+    /* Sage accent */
+    --sage-50: 120 16% 97%;
+    --sage-100: 118 17% 93%;
+    --sage-200: 120 15% 85%;
+    --sage-500: 130 14% 46%;
+    --sage-600: 132 16% 37%;
+    --sage-700: 134 18% 29%;
+
+    --primary: 132 16% 34%;
+    --primary-foreground: 60 20% 98%;
+    --secondary: 40 14% 94%;
+    --secondary-foreground: 24 10% 15%;
+    --accent: 118 17% 93%;
+    --accent-foreground: 134 18% 24%;
+    --destructive: 2 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 130 14% 46%;
+
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: hsl(var(--sage-200));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Print: only the report is shown, on clean white pages */
+@media print {
+  @page {
+    size: letter;
+    margin: 0.6in 0.6in 0.7in;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  .print-hidden,
+  [data-sonner-toaster] {
+    display: none !important;
+  }
+  .print-reset {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  .print-avoid-break {
+    break-inside: avoid;
+  }
+  .print-break-before {
+    break-before: page;
+  }
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}
